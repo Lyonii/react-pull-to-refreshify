@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react";
 import { useScrollParent } from "./utils/useScrollParent";
 
