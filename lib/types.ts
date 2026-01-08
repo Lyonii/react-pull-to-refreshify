@@ -7,6 +7,12 @@ export type PullStatus =
   | "refreshing"
   | "complete";
 
+export type LoadStatus =
+  | "normal"
+  | "loading"
+  | "complete"
+  | "noMore";
+
 export interface PullToRefreshifyProps {
   className?: string;
   style?: CSSProperties;
@@ -53,4 +59,29 @@ export interface PullToRefreshifyProps {
    */
   prefixCls?: string;
   children?: ReactNode;
+  /**
+   * Whether to enable load more on scroll to bottom
+   */
+  enableLoadMore?: boolean;
+  /**
+   * Whether to display the loading more status
+   */
+  loadingMore?: boolean;
+  /**
+   * Handler function when load more triggered
+   */
+  onLoadMore?: () => void;
+  /**
+   * Distance from bottom to trigger load more, unit is px
+   */
+  loadMoreThreshold?: number;
+  /**
+   * Whether load more is disabled
+   */
+  loadMoreDisabled?: boolean;
+  /**
+   * Customize the loading more content according to the load status
+   */
+  renderLoadMore?: (status: LoadStatus) => React.ReactNode;
+  styles?:{ [key in "body" | "container" | "content" | "loadMore" | "refresh"]?: React.CSSProperties}
 }

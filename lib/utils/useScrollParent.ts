@@ -24,7 +24,7 @@ const getScrollParent = (node: Element) => {
 export const useScrollParent = () => {
   const pullRef = useRef<any>();
   const touchstartYRef = useRef(0);
-  const scrollParentRef = useRef<ReturnType<typeof getScrollParent>>(window);
+  const scrollParentRef = useRef<ReturnType<typeof getScrollParent>>();
   const unbindScrollParentEvents = useRef(() => {});
 
   const bindScrollParentEvents = (
@@ -76,8 +76,8 @@ export const useScrollParent = () => {
       unbindScrollParentEvents.current =
         bindScrollParentEvents(nextScrollParent);
       scrollParentRef.current = nextScrollParent;
-    }
-  });
+    } else scrollParentRef.current = window;
+  }, []);
 
   return [pullRef, scrollParentRef] as const;
 };

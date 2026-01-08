@@ -1,7 +1,7 @@
 /**
  * get element scroll top
  */
-export const getScrollTop = (ele: Element | Window): number => {
+export const getScrollTop = (ele: Element | Window = window): number => {
   if (ele === document.documentElement) {
     return (document.scrollingElement || document.documentElement).scrollTop;
   }
